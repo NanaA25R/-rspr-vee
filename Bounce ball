@@ -1,0 +1,31 @@
+import ursina
+import random
+
+mitspil = ursina.Ursina()
+
+mincube = ursina.Entity(model="circle")
+
+
+mincube.hastx = 0.1
+mincube.hasty = 0.1
+mincube.hastz = 0.1
+
+
+def update():
+    mincube.x += mincube.hastx
+    mincube.y += mincube.hasty
+
+    if mincube.x > 50:
+        mincube.hastx = random.uniform(-0.5, 0)
+
+    if mincube.x < -50:
+        mincube.hastx = random.uniform(0, 0.5)
+    
+    if mincube.y > 50:
+        mincube.hasty = random.uniform(-0.5, 0)
+
+    if mincube.y < -50:
+        mincube.hasty = random.uniform(0, 0.5)
+
+
+mitspil.run()
